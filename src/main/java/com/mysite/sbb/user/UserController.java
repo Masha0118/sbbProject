@@ -26,12 +26,12 @@ public class UserController {
             return "signup_form";
         }
 
-        if (!userCreateForm.getPassword().equals(userCreateForm.getPassword2())) {
+        if (!userCreateForm.getPassword1().equals(userCreateForm.getPassword2())) {
             bindingResult.rejectValue("password2", "passwordInCorrect", "2개의 비밀번호가 일치하지 않습니다.");
             return "signup_form";
         }
 
-        userService.create(userCreateForm.getUsername(), userCreateForm.getEmail(), userCreateForm.getPassword());
+        userService.create(userCreateForm.getUsername(), userCreateForm.getEmail(), userCreateForm.getPassword1());
 
         return "redirect:/";
     }
