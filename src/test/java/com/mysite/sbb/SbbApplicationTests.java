@@ -8,6 +8,7 @@ import com.mysite.sbb.answer.AnswerRepository;
 import com.mysite.sbb.question.Question;
 import com.mysite.sbb.question.QuestionRepository;
 import com.mysite.sbb.question.QuestionService;
+import com.mysite.sbb.user.SiteUser;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ class SbbApplicationTests {
 	@Autowired
 	private QuestionService questionService;
 
+
 	@Autowired
 	private AnswerRepository answerRepository;
 
@@ -28,9 +30,10 @@ class SbbApplicationTests {
 	@Test
 	void testJpa() {
 		for (int i = 0; i < 300; i++) {
-			String subject = String.format("테스트 데이터입니다:[%03d]", i);
+			String subject = String.format("테스트 데이터 입니다:[%03d]", i);
 			String content = "내용 없음";
-			this.questionService.create(subject, content);
+			SiteUser user = user;
+			this.questionService.create(subject, content, user);
 		}
 	}
 }
